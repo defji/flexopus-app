@@ -45,7 +45,6 @@ const form = useForm({
                                     type="text"
                                     class="mt-1 block w-full"
                                     v-model="form.email"
-                                    required
                                     autofocus
                                     autocomplete="email"
                                 />
@@ -60,7 +59,6 @@ const form = useForm({
                                     type="text"
                                     class="mt-1 block w-full"
                                     v-model="form.subject"
-                                    required
                                     autofocus
                                 />
 
@@ -74,7 +72,6 @@ const form = useForm({
                                     type="text"
                                     class="mt-1 block w-full h-80"
                                     v-model="form.body"
-                                    required
                                     autofocus
                                 />
 
@@ -91,7 +88,8 @@ const form = useForm({
                                     leave-active-class="transition ease-in-out"
                                     leave-to-class="opacity-0"
                                 >
-                                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
+                                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Email successfully
+                                        sent.</p>
                                 </Transition>
                             </div>
                         </form>
