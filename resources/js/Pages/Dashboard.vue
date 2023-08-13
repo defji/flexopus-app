@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import {Head} from '@inertiajs/vue3';
+import {Head, Link} from '@inertiajs/vue3';
 
 
 defineProps({
@@ -26,7 +26,7 @@ defineProps({
                     <div class="p-6 text-gray-900">
                         Hello, <strong>{{ user.name }}</strong>, your role is
                         <strong>{{ user.role }}</strong>!
-                        Now you can send an email
+                        <Link href="mail-sender" class="link">Now you can send an email</Link>
                         <span v-if="user.role==='Administrator'"><strong>with attachment</strong></span>
                         !
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,11 @@ Route::get('/mail-sender', function () {
         'user' => auth()->user(),
     ]);
 })->middleware(['auth', 'verified'])->name('mail-sender');
+
+Route::post("/mail-send", [MailController::class, 'store'])->middleware([
+    'auth', 'verified',
+])->name('mail-send');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
