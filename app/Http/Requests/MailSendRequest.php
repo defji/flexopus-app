@@ -15,6 +15,7 @@ class MailSendRequest extends FormRequest
     public function rules(): array
     {
         return [
+            "email"   => "required|email",
             "subject" => "required",
             "body"    => "required",
         ];

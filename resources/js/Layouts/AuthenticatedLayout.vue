@@ -34,7 +34,7 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('mail-sender')" :active="route().current('mailsender')">
+                                <NavLink :href="route('mail-sender')" :active="route().current('mail-sender')">
                                     Mail sender
                                 </NavLink>
                             </div>
