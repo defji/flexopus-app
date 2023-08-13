@@ -33,6 +33,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $appends = ['role'];
+
     /**
      * The attributes that should be cast.
      *
@@ -40,6 +42,14 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'password'          => 'hashed',
     ];
+
+    /**
+     * @return string
+     */
+    public function getRoleAttribute()
+    {
+        return $this->is_admin ? "Administrator" : "Registered user";
+    }
 }
