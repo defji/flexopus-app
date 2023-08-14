@@ -17,7 +17,9 @@ defineProps({
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Dashboard
+            </h2>
         </template>
 
         <div class="py-12">
@@ -26,10 +28,14 @@ defineProps({
                     <div class="p-6 text-gray-900">
                         Hello, <strong>{{ user.name }}</strong>, your role is
                         <strong>{{ user.role }}</strong>!
-                        <Link href="mail-sender" class="link">Now you can send an email</Link>
+                        <Link
+                            href="mail-sender"
+                            class="link"
+                        >
+                            Now you can send an email
+                        </Link>
                         <span v-if="user.role==='Administrator'"><strong>with attachment</strong></span>
                         !
-
                     </div>
                 </div>
             </div>
