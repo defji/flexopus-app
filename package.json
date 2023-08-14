@@ -13,6 +13,7 @@
         "autoprefixer": "^10.4.12",
         "axios": "^1.1.2",
         "eslint": "^8.47.0",
+        "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-vue": "^9.17.0",
         "laravel-vite-plugin": "^0.7.5",
         "postcss": "^8.4.18",

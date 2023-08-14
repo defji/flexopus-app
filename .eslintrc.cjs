@@ -5,7 +5,8 @@ module.exports = {
     },
     extends: [
         'eslint:recommended',
-        'plugin:vue/recommended'
+        'plugin:vue/vue3-recommended',
+        'prettier'
     ],
     rules: {
         // Itt adhatsz meg további szabályokat a kódodhoz

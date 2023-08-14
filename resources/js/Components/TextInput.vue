@@ -6,6 +6,10 @@ defineProps({
         type: String,
         required: true,
     },
+    refValue: {
+        type: String,
+        required: false,
+    },
 });
 
 defineEmits(['update:modelValue']);
@@ -13,7 +17,7 @@ defineEmits(['update:modelValue']);
 const input = ref(null);
 
 onMounted(() => {
-    if (input.value.hasAttribute('autofocus')) {
+    if (input.value && input.value.hasAttribute('autofocus')) {
         input.value.focus();
     }
 });
@@ -23,7 +27,7 @@ defineExpose({focus: () => input.value.focus()});
 
 <template>
     <input
-        ref="input"
+        :ref="ref"
         class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"

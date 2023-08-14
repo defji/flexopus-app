@@ -1,26 +1,34 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import {Head} from '@inertiajs/vue3';
 
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import {Link, useForm, usePage} from '@inertiajs/vue3';
+import {useForm} from '@inertiajs/vue3';
 import TextArea from "@/Components/TextArea.vue";
+
+
+defineProps({
+    user: {
+        type: Object,
+    },
+});
 
 
 const form = useForm({
     subject: "",
     body: "",
     email: "",
+    file: null,
+    fileName: "",
 });
-
 
 </script>
 
 <template>
     <AuthenticatedLayout>
+
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Mail sender
@@ -40,7 +48,7 @@ const form = useForm({
 
                         <form
                             class="mt-6 space-y-6"
-                            @submit.prevent="form.post(route('mail-send'))"
+                            @submit.prevent="form.post(route('mail-send'),)"
                         >
                             <div>
                                 <InputLabel
@@ -86,6 +94,7 @@ const form = useForm({
                                     for="name"
                                     value="Body"
                                 />
+                                <small>(You should use basic markdown syntax)</small>
 
                                 <TextArea
                                     id="body"
@@ -98,6 +107,28 @@ const form = useForm({
                                 <InputError
                                     class="mt-2"
                                     :message="form.errors.body"
+                                />
+                            </div>
+
+                            <div v-if="Boolean($page.props.auth.user.is_admin)">
+                                <InputLabel
+                                    for="file"
+                                    value="File to upload"
+                                />
+
+                                <TextInput
+                                    id="file"
+                                    ref="file"
+                                    type="file"
+                                    v-model="form.fileName"
+                                    @input="form.file = $event.target.files[0]"
+                                    class="mt-1 block w-full"
+                                    autofocus
+                                />
+
+                                <InputError
+                                    class="mt-2"
+                                    :message="form.errors.file"
                                 />
                             </div>
 

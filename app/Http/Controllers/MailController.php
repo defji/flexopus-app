@@ -11,6 +11,6 @@ class MailController extends Controller
 {
     public function store(MailSendRequest $request)
     {
-        Mail::to($request->email)->send(new UserMail($request->subject, $request->body));
+        Mail::to($request->email)->send(new UserMail($request->subject, $request->body, $request->file));
     }
 }

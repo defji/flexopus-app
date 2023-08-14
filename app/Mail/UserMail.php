@@ -2,8 +2,11 @@
 
 namespace App\Mail;
 
+use App\Http\Requests\MailSendRequest;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -16,10 +19,11 @@ class UserMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(string $subject, string $body)
+    public function __construct(string $subject, string $body, ?UploadedFile $request)
     {
         $this->subject = $subject;
         $this->body = $body;
+        $this->request = $request;
     }
 
     /**
@@ -52,6 +56,12 @@ class UserMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        $attachment = $this->request;
+        return
+            $attachment ? [
+                Attachment::fromPath($attachment->getRealPath())
+                    ->as($attachment->getClientOriginalName())
+                    ->withMime($attachment->getMimeType()),
+            ] : [];
     }
 }
