@@ -9,13 +9,6 @@ import {useForm} from '@inertiajs/vue3';
 import TextArea from "@/Components/TextArea.vue";
 
 
-defineProps({
-    user: {
-        type: Object,
-    },
-});
-
-
 const form = useForm({
     subject: "",
     body: "",
@@ -148,10 +141,25 @@ const form = useForm({
                                         v-if="form.recentlySuccessful"
                                         class="text-sm text-gray-600"
                                     >
+
                                         Email successfully
                                         sent.
                                     </p>
+
                                 </Transition>
+                                <Transition
+                                    enter-active-class="transition ease-in-out"
+                                    enter-from-class="opacity-0"
+                                    leave-active-class="transition ease-in-out"
+                                    leave-to-class="opacity-0"
+                                >
+
+                                    <InputError
+                                        class="mt-2"
+                                        :message="form.errors.mailSend"
+                                    />
+                                </Transition>
+
                             </div>
                         </form>
                     </section>
