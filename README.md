@@ -16,6 +16,7 @@ attachments.
 clone git@github.com:defji/flexopus-app.git
 cd flexopis-app
 # set mysql credentials in .env 
+# set mail credentials in .env
 composer install
 npm install
 php artisan serve
@@ -36,5 +37,5 @@ npm run lint
 - You must see file upload field for mail attachment
 - Enjoy! 😎
 
-&copy; Balázs Györkös 2023
+&copy; Balázs Györkös 2023 
 
