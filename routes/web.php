@@ -28,14 +28,10 @@ Route::get('/', function () {
 
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard', [
-        'user' => auth()->user(),
-    ]);
+    return Inertia::render('Dashboard');;
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/mail-sender', function () {
-    return Inertia::render('MailSender', [
-        'user' => auth()->user(),
-    ]);
+    return Inertia::render('MailSender');
 })->middleware(['auth', 'verified'])->name('mail-sender');
 
 Route::post("/mail-send", [MailController::class, 'store'])->middleware([

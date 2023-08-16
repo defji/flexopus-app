@@ -153,7 +153,6 @@ const form = useForm({
                                     leave-active-class="transition ease-in-out"
                                     leave-to-class="opacity-0"
                                 >
-
                                     <InputError
                                         class="mt-2"
                                         :message="form.errors.mailSend"
