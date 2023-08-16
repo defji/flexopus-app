@@ -4,11 +4,12 @@ module.exports = {
         node: true,
     },
     extends: [
-        'eslint:recommended',
+        //'eslint:recommended',
         'plugin:vue/vue3-recommended',
         'prettier'
     ],
     rules: {
-        // Itt adhatsz meg további szabályokat a kódodhoz
+        'strict': 'off',
+        'vue/multi-word-component-names': 'off',
     },
 };

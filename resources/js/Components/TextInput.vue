@@ -9,6 +9,7 @@ defineProps({
     refValue: {
         type: String,
         required: false,
+        default: null
     },
 });
 

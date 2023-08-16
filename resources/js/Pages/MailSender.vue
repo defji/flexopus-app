@@ -112,11 +112,11 @@ const form = useForm({
                                 <TextInput
                                     id="file"
                                     ref="file"
-                                    type="file"
                                     v-model="form.fileName"
-                                    @input="form.file = $event.target.files[0]"
+                                    type="file"
                                     class="mt-1 block w-full"
                                     autofocus
+                                    @input="form.file = $event.target.files[0]"
                                 />
 
                                 <InputError

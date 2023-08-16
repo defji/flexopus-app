@@ -21,5 +21,11 @@ npm install
 php artisan serve
 ```
 
-via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## ESLint
+
+```bash
+npm run lint
+```
+
+&copy; Balázs Györkös 2023
 
