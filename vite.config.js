@@ -17,6 +17,6 @@ export default defineConfig({
                 },
             },
         }),
-        //eslint()
+        eslint()
     ],
 });

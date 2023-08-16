@@ -27,5 +27,14 @@ php artisan serve
 npm run lint
 ```
 
+## Usage
+
+- Use register form
+- Login with registered user
+- You can send email without attachment
+- Login with admin@flexopus.com with password: fl3x1230pus!
+- You must see file upload field for mail attachment
+- Enjoy! 😎
+
 &copy; Balázs Györkös 2023
 
