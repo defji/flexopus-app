@@ -26,10 +26,11 @@ Route::get('/', function () {
     ]);
 });
 
-
+/** 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');;
 })->middleware(['auth', 'verified'])->name('dashboard');
+**/
 Route::get('/mail-sender', function () {
     return Inertia::render('MailSender');
 })->middleware(['auth', 'verified'])->name('mail-sender');
