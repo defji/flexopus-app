@@ -56,7 +56,8 @@ class UserMail extends Mailable
      */
     public function attachments(): array
     {
-        $attachment = $this->request;
+        $attachment = $this->request && (bool)auth()->user()->is_admin;
+
         return
             $attachment ? [
                 Attachment::fromPath($attachment->getRealPath())
