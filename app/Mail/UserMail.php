@@ -2,9 +2,7 @@
 
 namespace App\Mail;
 
-use App\Http\Requests\MailSendRequest;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
@@ -19,11 +17,11 @@ class UserMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(string $subject, string $body, ?UploadedFile $request)
+    public function __construct(string $subject, string $body, UploadedFile $file = null)
     {
         $this->subject = $subject;
         $this->body = $body;
-        $this->request = $request;
+        $this->file = $file;
     }
 
     /**
@@ -56,7 +54,7 @@ class UserMail extends Mailable
      */
     public function attachments(): array
     {
-        $attachment = $this->request && (bool)auth()->user()->is_admin;
+        $attachment = $this->file;
 
         return
             $attachment ? [

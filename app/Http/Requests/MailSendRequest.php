@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class MailSendRequest extends FormRequest
 {
@@ -19,11 +20,12 @@ class MailSendRequest extends FormRequest
             "email"   => "required|email",
             "subject" => "required",
             "body"    => "required",
-        ];
-        if (auth()->user()->is_admin) {
-            $rules['file'] = "file";
-        }
+            "file"    => [
+                Rule::prohibitedIf(!request()->user()->is_admin),
+                Rule::excludeIf(!request()->user()->is_admin),
+            ],
 
+        ];
         return $rules;
     }
 }
